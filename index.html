@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINICURSO</title>
+</head>
+<body>
+    <h1>CIENCIA DE DADOS</h1>
+<p class="texto">A CIENCIA DE DADOS É UM CAMPO INTERDICIPLINAR QUE USA PROCESSO ALGORITMOS PARA EXTRAIR CONHECIMENTO,
+    DE DADOS BUSCANDO GERAR CONHECIMENTO DIANTE O DADO COMO UM TODO.
+</p>
+<h1>I.A</h1>
+<p class="texto">CAMPO DE ESTUDO NO QUAL BUSCA GERAR CONHECIMENTO, PARA CAPACITAR AS MAQUINAS A APRENDER O QUE ESTÁ SENDO
+    TRABALHADO EM CONJUNTO COM O CONTATO HUMANO.
+</p>
+<h1>LLMs</h1>
+<p class="texto">LLM (Large Language Models) é um modelo de Machine Learning usado na inteligência artificial, capaz de interpretar diferentes funções. 
+    Os LLM são treinados com imensas quantidades de dados para poderem reconhecer e gerar imagens, textos, conversações e outros tipos de conteúdos.
+    Eles são capazes de fazer isso graças a bilhões de parâmetros que permitem que capturem padrões complexos na linguagem e executem uma ampla variedade de tarefas relacionadas a linguagem. 
+    Os LLMs estão revolucionando aplicativos em várias áreas, desde chatbots e assistentes virtuais até geração de conteúdo, assistência de pesquisa e tradução de idiomas.</p>
+  <h1>COLAB FERRAMENTA PARA BANCO DE DADOS COM PYTON<h1/>
+  <p>
+    https://colab.research.google.com/#scrollTo=gJr_9dXGpJ05
+  <p/>
+    <p>
+      O Google Colab, ou Google Colaboratory, é um ambiente de desenvolvimento integrado (IDE) baseado em nuvem que permite criar e executar notebooks interativos,
+      principalmente em Python. Oferecido gratuitamente pelo Google, a ferramenta é comumente utilizada para pesquisas em machine learning e Inteligência Artificial. 
+      Integrando a estrutura do Jupyter Notebook com o Google Drive, o Colab possui um espaço colaborativo onde usuários podem compartilhar e modificar códigos facilmente. 
+      Ainda, equipado com máquinas virtuais pré-configuradas e GPUs poderosas, suporta outras linguagens como R, Julia e Swift, ideal para tarefas intensivas de processamento de dados.
+    <p/>
+      <p>
+        O sistema funciona embarcado com IA, aumentado a facilidade para gerar codigos duarante seu uso
+    <p/>
+      <p># prompt: Gerar uma função python que lê um link do google drive, baixando um arquivo CSV e jogando em um dataframe pandas.
+# O parâmetro será a URL completa do arquivo
+
+def load_csv_from_drive(url):
+  """
+  Reads a CSV file from a Google Drive shareable link and loads it into a pandas DataFrame.
+
+  Args:
+    url: The shareable URL of the Google Drive file.
+
+  Returns:
+    A pandas DataFrame containing the data from the CSV file, or None if an error occurs.
+  """
+  try:
+    # Extract the file ID from the URL
+    file_id = url.split('/')[-2]
+    download_url = f'https://drive.google.com/uc?export=download&id={file_id}'
+
+    response = requests.get(download_url, stream=True)
+    response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+
+    # Use BytesIO to treat the downloaded content as a file
+    csv_content = io.BytesIO(response.content)
+
+    df = pd.read_csv(csv_content)
+    return df
+
+  except requests.exceptions.RequestException as e:
+    print(f"Error downloading the file: {e}")
+    return None
+  except Exception as e:
+    print(f"An error occurred: {e}")
+    return None
+
+https://drive.google.com/file/d/1Suo2i-DybJq1ghT-EMe472JIECGVZ7Sk/view?usp=drive_link<p/>
+</body>
+</html>
