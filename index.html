@@ -4,68 +4,248 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MINICURSO</title>
-    <link rel="stylesheet" href="estilo.css">
+    <style>
+        p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.40cm;
+            color: white;
+            padding: 1cm;
+            border: 0.50cm solid black;
+            border-left: 5cm solid black;
+            border-right: 5cm solid black; 
+            text-align: justify;
+            margin: 1em 0;
+        }
+
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.90cm;
+            color: white;
+            margin: 1em 0;
+        }
+
+        h1:hover {
+            text-decoration: line-through;
+            cursor: pointer;
+        }
+
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.40cm;
+            color: white;
+            padding: 1cm;
+            border: 2cm solid black;
+            text-decoration: none;
+            margin: 1em 0;
+            background-color: #333;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #555;
+        }
+
+        button {
+            display: block;
+            margin: 2em auto;
+            padding: 15px 30px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            border: 2px solid #444;
+        }
+
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .col-sm-1 { flex: 0 0 8.33333%; max-width: 8.33333%; }
+            .col-sm-2 { flex: 0 0 16.66667%; max-width: 16.66667%; }
+            .col-sm-3 { flex: 0 0 25%; max-width: 25%; }
+            .col-sm-4 { flex: 0 0 33.33333%; max-width: 33.33333%; }
+            .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+            .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+            
+            .d-sm-none { display: none !important; }
+            .d-sm-block { display: block !important; }
+
+            p, a {
+                border-left: 1cm solid black;
+                border-right: 1cm solid black;
+                font-size: 0.35cm;
+            }
+            
+            h1 {
+                font-size: 0.70cm;
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .col-md-1 { flex: 0 0 8.33333%; max-width: 8.33333%; }
+            .col-md-2 { flex: 0 0 16.66667%; max-width: 16.66667%; }
+            .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+            .col-md-4 { flex: 0 0 33.33333%; max-width: 33.33333%; }
+            .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+            .col-md-8 { flex: 0 0 66.66667%; max-width: 66.66667%; }
+            .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+            
+            .d-md-none { display: none !important; }
+            .d-md-block { display: block !important; }
+
+            p, a {
+                border-left: 2cm solid black;
+                border-right: 2cm solid black;
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .col-lg-1 { flex: 0 0 8.33333%; max-width: 8.33333%; }
+            .col-lg-2 { flex: 0 0 16.66667%; max-width: 16.66667%; }
+            .col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+            .col-lg-4 { flex: 0 0 33.33333%; max-width: 33.33333%; }
+            .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+            .col-lg-8 { flex: 0 0 66.66667%; max-width: 66.66667%; }
+            .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+            
+            .d-lg-none { display: none !important; }
+            .d-lg-block { display: block !important; }
+        }
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .col-xl-1 { flex: 0 0 8.33333%; max-width: 8.33333%; }
+            .col-xl-2 { flex: 0 0 16.66667%; max-width: 16.66667%; }
+            .col-xl-3 { flex: 0 0 25%; max-width: 25%; }
+            .col-xl-4 { flex: 0 0 33.33333%; max-width: 33.33333%; }
+            .col-xl-6 { flex: 0 0 50%; max-width: 50%; }
+            .col-xl-8 { flex: 0 0 66.66667%; max-width: 66.66667%; }
+            .col-xl-12 { flex: 0 0 100%; max-width: 100%; }
+            
+            .d-xl-none { display: none !important; }
+            .d-xl-block { display: block !important; }
+        }
+    </style>
 </head>
+
 <body id="corpo">
-    <h1>CIENCIA DE DADOS</h1>
-<p class="texto">A CIENCIA DE DADOS É UM CAMPO INTERDICIPLINAR QUE USA PROCESSO ALGORITMOS PARA EXTRAIR CONHECIMENTO,
-    DE DADOS BUSCANDO GERAR CONHECIMENTO DIANTE O DADO COMO UM TODO.
-</p>
-<h1>I.A</h1>
-<p class="texto">CAMPO DE ESTUDO NO QUAL BUSCA GERAR CONHECIMENTO, PARA CAPACITAR AS MAQUINAS A APRENDER O QUE ESTÁ SENDO
-    TRABALHADO EM CONJUNTO COM O CONTATO HUMANO.
-</p>
-<h1>LLMs</h1>
-<p class="texto">LLM (Large Language Models) é um modelo de Machine Learning usado na inteligência artificial, capaz de interpretar diferentes funções. 
-    Os LLM são treinados com imensas quantidades de dados para poderem reconhecer e gerar imagens, textos, conversações e outros tipos de conteúdos.
-    Eles são capazes de fazer isso graças a bilhões de parâmetros que permitem que capturem padrões complexos na linguagem e executem uma ampla variedade de tarefas relacionadas a linguagem. 
-    Os LLMs estão revolucionando aplicativos em várias áreas, desde chatbots e assistentes virtuais até geração de conteúdo, assistência de pesquisa e tradução de idiomas.</p>
-  <h1>COLAB FERRAMENTA PARA BANCO DE DADOS COM PYTON</h1>
- <a href="https://colab.research.google.com/drive/1YbSLuydQZ-UGqacSnxnMSxBAa-EzgMaE#scrollTo=f_MUi2qmSB5S">LINK PARA O COLAB</a>
+    <h1>CIÊNCIA DE DADOS</h1>
+    <p class="texto">
+        A CIÊNCIA DE DADOS É UM CAMPO INTERDISCIPLINAR QUE USA PROCESSOS E ALGORITMOS PARA EXTRAIR CONHECIMENTO DE DADOS, BUSCANDO GERAR INSIGHTS SIGNIFICATIVOS A PARTIR DOS DADOS COMO UM TODO.
+    </p>
+
+    <h1>I.A</h1>
+    <p class="texto">
+        CAMPO DE ESTUDO NO QUAL BUSCA GERAR CONHECIMENTO PARA CAPACITAR AS MÁQUINAS A APRENDER O QUE ESTÁ SENDO TRABALHADO EM CONJUNTO COM O CONTATO HUMANO.
+    </p>
+
+    <h1>LLMs</h1>
+    <p class="texto">
+        LLM (Large Language Models) é um modelo de Machine Learning usado na inteligência artificial, capaz de interpretar diferentes funções. Os LLM são treinados com imensas quantidades de dados para poderem reconhecer e gerar imagens, textos, conversações e outros tipos de conteúdos. Eles são capazes de fazer isso graças a bilhões de parâmetros que permitem que capturem padrões complexos na linguagem e executem uma ampla variedade de tarefas relacionadas à linguagem. Os LLMs estão revolucionando aplicativos em várias áreas, desde chatbots e assistentes virtuais até geração de conteúdo, assistência de pesquisa e tradução de idiomas.
+    </p>
+
+    <h1>COLAB - FERRAMENTA PARA BANCO DE DADOS COM PYTHON</h1>
+    
+    <a href="https://colab.research.google.com/drive/1YbSLuydQZ-UGqacSnxnMSxBAa-EzgMaE#scrollTo=f_MUi2qmSB5S" target="_blank">
+        LINK PARA O COLAB
+    </a>
+
     <p>
-      O Google Colab, ou Google Colaboratory, é um ambiente de desenvolvimento integrado (IDE) baseado em nuvem que permite criar e executar notebooks interativos,
-      principalmente em Python. Oferecido gratuitamente pelo Google, a ferramenta é comumente utilizada para pesquisas em machine learning e Inteligência Artificial. 
-      Integrando a estrutura do Jupyter Notebook com o Google Drive, o Colab possui um espaço colaborativo onde usuários podem compartilhar e modificar códigos facilmente. 
-      Ainda, equipado com máquinas virtuais pré-configuradas e GPUs poderosas, suporta outras linguagens como R, Julia e Swift, ideal para tarefas intensivas de processamento de dados.
+        O Google Colab, ou Google Colaboratory, é um ambiente de desenvolvimento integrado (IDE) baseado em nuvem que permite criar e executar notebooks interativos, principalmente em Python. Oferecido gratuitamente pelo Google, a ferramenta é comumente utilizada para pesquisas em machine learning e Inteligência Artificial. Integrando a estrutura do Jupyter Notebook com o Google Drive, o Colab possui um espaço colaborativo onde usuários podem compartilhar e modificar códigos facilmente. Ainda, equipado com máquinas virtuais pré-configuradas e GPUs poderosas, suporta outras linguagens como R, Julia e Swift, ideal para tarefas intensivas de processamento de dados.
     </p>
-      <p>
-        O sistema funciona embarcado com IA, aumentado a facilidade para gerar codigos duarante seu uso
+
+    <p>
+        O sistema funciona embarcado com IA, aumentando a facilidade para gerar códigos durante seu uso.
     </p>
-      <p># prompt: Gerar uma função python que lê um link do google drive, baixando um arquivo CSV e jogando em um dataframe pandas.
+
+    <div class="code-block">
+# prompt: Gerar uma função python que lê um link do google drive, baixando um arquivo CSV e jogando em um dataframe pandas.
 # O parâmetro será a URL completa do arquivo
 
+import pandas as pd
+import requests
+import io
+
 def load_csv_from_drive(url):
-  """
-  Reads a CSV file from a Google Drive shareable link and loads it into a pandas DataFrame.
+    """
+    Reads a CSV file from a Google Drive shareable link and loads it into a pandas DataFrame.
+    
+    Args:
+        url: The shareable URL of the Google Drive file.
+    
+    Returns:
+        A pandas DataFrame containing the data from the CSV file, or None if an error occurs.
+    """
+    try:
+        # Extract the file ID from the URL
+        file_id = url.split('/')[-2]
+        download_url = f'https://drive.google.com/uc?export=download&id={file_id}'
+        
+        response = requests.get(download_url, stream=True)
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+        
+        # Use BytesIO to treat the downloaded content as a file
+        csv_content = io.BytesIO(response.content)
+        df = pd.read_csv(csv_content)
+        
+        return df
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading the file: {e}")
+        return None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
 
-  Args:
-    url: The shareable URL of the Google Drive file.
+# Exemplo de uso:
+# url = "https://drive.google.com/file/d/1Suo2i-DybJq1ghT-EMe472JIECGVZ7Sk/view?usp=drive_link"
+# df = load_csv_from_drive(url)
+    </div>
 
-  Returns:
-    A pandas DataFrame containing the data from the CSV file, or None if an error occurs.
-  """
-  try:
-    # Extract the file ID from the URL
-    file_id = url.split('/')[-2]
-    download_url = f'https://drive.google.com/uc?export=download&id={file_id}'
+    <button onclick="fundo()">MUDAR COR DE FUNDO</button>
 
-    response = requests.get(download_url, stream=True)
-    response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+    <script>
+        const cores = ['black', '#1a1a2e', '#16213e', '#0f3460', '#533a71', '#6b4c93', '#2c3e50', '#34495e'];
+        let corAtual = 0;
 
-    # Use BytesIO to treat the downloaded content as a file
-    csv_content = io.BytesIO(response.content)
-
-    df = pd.read_csv(csv_content)
-    return df
-
-  except requests.exceptions.RequestException as e:
-    print(f"Error downloading the file: {e}")
-    return None
-  except Exception as e:
-    print(f"An error occurred: {e}")
-    return None
-
-https://drive.google.com/file/d/1Suo2i-DybJq1ghT-EMe472JIECGVZ7Sk/view?usp=drive_link</p>
-<button onclick="fundo()">MUDAR COR DE FUNDO</button>
+        function fundo() {
+            corAtual = (corAtual + 1) % cores.length;
+            document.body.style.backgroundColor = cores[corAtual];
+        }
+    </script>
 </body>
 </html>
